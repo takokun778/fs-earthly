@@ -8,16 +8,14 @@ deps:
     RUN go mod download
     SAVE ARTIFACT go.mod AS LOCAL go.mod
     SAVE ARTIFACT go.sum AS LOCAL go.sum
+    COPY ./*.go ./
+    COPY --dir hello ./
 
 test:
     FROM +deps
-    COPY ./*.go ./
-    COPY --dir hello ./
     RUN go test ./...
 
 build:
     FROM +deps
-    COPY ./*.go ./
-    COPY --dir hello ./
     RUN go build -ldflags="-s -w" -o main
     SAVE ARTIFACT main AS LOCAL .
