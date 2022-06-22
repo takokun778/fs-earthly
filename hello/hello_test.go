@@ -22,6 +22,13 @@ func TestHello(t *testing.T) {
 			},
 			want: "hello rei",
 		},
+		{
+			name: "hello",
+			args: args{
+				name: "rina",
+			},
+			want: "hello rina",
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
