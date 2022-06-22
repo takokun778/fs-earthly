@@ -3,9 +3,6 @@ FROM golang:1.18.3-alpine
 RUN apk add build-base
 WORKDIR app
 
-apk:
-    RUN apk add build-base
-
 deps:
     COPY go.mod go.sum ./
     RUN go mod download
